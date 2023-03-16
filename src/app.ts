@@ -1,9 +1,15 @@
-import { config } from './models/schema';
-import { buildApp } from './server';
+import fastify from 'fastify';
+import { home } from './modules/home';
+import { userRoutes } from './modules/user';
+import { prettyLog } from './utils/logger';
 
-const app = buildApp();
-// i know it's ugly
-const { log: logger } = app;
-app.listen({ port: config.PORT, host: config.HOST });
-
-export { app, logger };
+export const app = fastify({
+  logger: { transport: prettyLog },
+});
+export const logger = app.log;
+app.register(home, {
+  prefix: '/',
+});
+app.register(userRoutes, {
+  prefix: '/users',
+});
