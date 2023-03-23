@@ -9,7 +9,7 @@ export const createUserSchema = z.object({
       bio: z.string().optional(),
     }),
   }),
-  post: z.object({
+  posts: z.object({
     create: z.object({
       title: z.string().min(4),
       description: z.string().optional(),
@@ -17,5 +17,4 @@ export const createUserSchema = z.object({
     }),
   }),
 });
-
-export type createUserBody = z.infer<typeof createUserSchema>;
+export type CreateUserBody = z.infer<typeof createUserSchema>;

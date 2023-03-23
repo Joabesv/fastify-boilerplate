@@ -1,7 +1,14 @@
 import type { FastifyInstance } from 'fastify';
-import { createUser, listUsers } from './user.controller';
+import {
+  createUser,
+  listUnique,
+  listUsers,
+  removeUser,
+} from './user.controller';
 
 export async function userRoutes(app: FastifyInstance) {
-  app.get('/', listUsers);
   app.post('/', createUser);
+  app.get('/', listUsers);
+  app.get('/:id', listUnique);
+  app.delete('/:id', removeUser);
 }

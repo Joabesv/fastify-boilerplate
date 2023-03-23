@@ -16,7 +16,7 @@ app.register(userRoutes, {
   prefix: '/users',
 });
 
-app.setErrorHandler((error, _, reply) => {
+app.setErrorHandler((error, _request, reply) => {
   if (error instanceof ZodError) {
     return reply.status(400).send({
       message: 'Validation error',
@@ -29,5 +29,5 @@ app.setErrorHandler((error, _, reply) => {
     // TODO: Move log to external tool, cause production bugs are complicated
   }
 
-  return reply.status(500).send({ message: 'Internal server error' });
+  reply.status(500).send({ message: 'Internal server error' });
 });
