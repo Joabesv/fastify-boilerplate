@@ -1,12 +1,6 @@
-import { it, describe, beforeAll, afterAll, expect } from 'vitest';
-import { buildApp } from '../src/server';
-
+import { it, describe, afterAll, expect } from 'vitest';
+import { app } from '../src/app';
 describe('App tests', () => {
-  let app: ReturnType<typeof buildApp>;
-  beforeAll(() => {
-    app = buildApp();
-  });
-
   afterAll(async () => {
     await app.close();
   });

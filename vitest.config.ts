@@ -1,11 +1,10 @@
 import { configDefaults, defineConfig } from 'vitest/config';
-import { fileURLToPath } from 'node:url';
-
+import tsconfigPaths from 'vite-tsconfig-paths';
 export default defineConfig({
+  plugins: [tsconfigPaths()],
   test: {
     environment: 'node',
     exclude: [...configDefaults.exclude, 'e2e/*'],
-    root: fileURLToPath(new URL('./', import.meta.url)),
     coverage: { provider: 'c8' },
   },
 });

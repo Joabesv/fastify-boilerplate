@@ -1,5 +1,5 @@
 import { config as dotEnvConfig } from 'dotenv';
-import { logger } from '../../app';
+import { logger } from '../app';
 import { z } from 'zod';
 
 if (process.env.NODE_ENV === 'test') {
@@ -15,11 +15,11 @@ const envSchema = z.object({
   HOST: z.string().min(4).default('localhost'),
 });
 
-const env = envSchema.safeParse(process.env);
+const _env = envSchema.safeParse(process.env);
 
-if (!env.success) {
-  logger.error('invalid envs', env.error.format());
+if (!_env.success) {
+  logger.error('invalid envs', _env.error.format());
   throw new Error('Invalid environments variables');
 }
 
-export const config = env.data;
+export const config = _env.data;

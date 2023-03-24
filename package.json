@@ -2,13 +2,14 @@
   "name": "fastify-address-post",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/app.js",
+  "main": "dist/server.js",
   "engines": {
-    "node": ">=16"
+    "node": ">=18",
+    "pnpm": "7.30.1"
   },
   "scripts": {
-    "start": "tsx src/app.ts",
-    "start:dev": "tsx watch src/app.ts",
+    "start": "tsx src/server.ts",
+    "start:dev": "tsx watch src/server.ts",
     "build": "tsup --config tsup.prod.config.ts",
     "build:type-check": "tsc --build",
     "test": "vitest run",
@@ -30,6 +31,7 @@
     "tsup": "^6.6.3",
     "tsx": "^3.12.3",
     "typescript": "^4.9.5",
+    "vite-tsconfig-paths": "^4.0.7",
     "vitest": "^0.29.2",
     "vitest-mock-extended": "^1.1.0"
   },

@@ -1,0 +1,2 @@
+#exclude package-lock from git diff
+pnpm-lock.yaml -diff
